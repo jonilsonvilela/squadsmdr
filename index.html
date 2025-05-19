@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -18,14 +19,27 @@
   <script>
     let data = {};
 
-    fetch('data.json')
+    function normalizar(str) {
+      return str
+        .normalize("NFD") // separa acentos
+        .replace(/[̀-ͯ]/g, "") // remove acentos
+        .toLowerCase()
+        .trim();
+    }
+
+    fetch("data.json")
       .then(res => res.json())
-      .then(json => data = json);
+      .then(json => {
+        // Criar um mapa com nomes normalizados como chave
+        for (let chave in json) {
+          data[normalizar(chave)] = json[chave];
+        }
+      });
 
     document.getElementById("inputNome").addEventListener("keyup", function (e) {
       if (e.key === "Enter") {
-        const nome = this.value.trim();
-        const relacionados = data[nome];
+        const nomeNormalizado = normalizar(this.value);
+        const relacionados = data[nomeNormalizado];
 
         const lista = document.getElementById("resultado");
         lista.innerHTML = "";
