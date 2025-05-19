@@ -2,104 +2,131 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nomes e Tarefas Relacionadas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Busca Avançada</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
-    input { padding: 10px; width: 100%; max-width: 500px; font-size: 16px; margin-bottom: 10px; }
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 1000px; margin: auto; }
+    input, select { padding: 8px; font-size: 16px; margin: 10px 0; width: 100%; max-width: 600px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
     h2 { margin-top: 40px; }
-    ul { list-style-type: none; padding: 0; }
-    li { padding: 10px 0; border-bottom: 1px solid #eee; }
-    .loading { color: #666; }
-    .error { color: #d32f2f; }
+    .tabs { margin-top: 20px; }
+    .tab { display: inline-block; margin-right: 10px; padding: 5px 10px; border: 1px solid #ccc; cursor: pointer; background: #eee; }
+    .tab.active { background: #ddd; font-weight: bold; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
   </style>
 </head>
 <body>
-  <h1>Consulta de Nomes Relacionados</h1>
-  <input type="text" id="inputNome" placeholder="Digite um nome e pressione Enter..." />
-  <ul id="resultadoNomes"></ul>
+  <h1>Busca por Nomes Relacionados</h1>
+  <input type="text" id="inputNome" placeholder="Buscar por nome (parcial ou completo)..." />
+  <select id="filtroClassificacao">
+    <option value="">Todas as classificações</option>
+  </select>
+  <table id="tabelaNomes">
+    <thead><tr><th>Nome</th><th>Classificação</th></tr></thead>
+    <tbody></tbody>
+  </table>
 
-  <h2>Consulta de Tarefas e Executantes</h2>
-  <input type="text" id="inputTarefa" placeholder="Digite uma tarefa e pressione Enter..." />
-  <ul id="resultadoTarefas"></ul>
+  <h2>Busca por Tarefa</h2>
+  <input type="text" id="inputTarefa" placeholder="Buscar por parte do nome da tarefa..." />
+  <div class="tabs">
+    <div class="tab active" data-tab="executante">Executante</div>
+    <div class="tab" data-tab="relacionados">Sujeitos relacionados</div>
+  </div>
+  <div id="executante" class="tab-content active">
+    <table><thead><tr><th>Executante</th></tr></thead><tbody id="tabelaExecutante"></tbody></table>
+  </div>
+  <div id="relacionados" class="tab-content">
+    <table><thead><tr><th>Tarefa Relacionada</th><th>Executante</th></tr></thead><tbody id="tabelaRelacionados"></tbody></table>
+  </div>
 
-  <script>
-    const nomesData = {};
-    let tarefasData = {};
-    let dadosCarregados = false;
+<script>
+  let nomesData = {};
+  let tarefasData = {};
+  let todasClassificacoes = new Set();
 
-    const normalizar = (str) => {
-      return str
-        .normalize("NFD")
-        .replace(/[̀-ͯ]/g, "")
-        .toLowerCase()
-        .trim();
-    };
+  const normalizar = str => str.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
 
-    const carregarDados = async () => {
-      try {
-        const [res1, res2] = await Promise.all([
-          fetch('data.json'),
-          fetch('base2.json')
-        ]);
+  async function carregarDados() {
+    const [res1, res2] = await Promise.all([
+      fetch("data.json").then(r => r.json()),
+      fetch("base2.json").then(r => r.json())
+    ]);
 
-        const dadosNomes = await res1.json();
-        const dadosTarefas = await res2.json();
-
-        Object.keys(dadosNomes).forEach(chave => {
-          nomesData[normalizar(chave)] = dadosNomes[chave];
-        });
-
-        Object.keys(dadosTarefas).forEach(chave => {
-          tarefasData[normalizar(chave)] = dadosTarefas[chave];
-        });
-
-        dadosCarregados = true;
-      } catch (erro) {
-        console.error("Erro ao carregar dados:", erro);
-      }
-    };
-
-    const mostrarResultadosNomes = (resultados) => {
-      const lista = document.getElementById('resultadoNomes');
-      if (!resultados || resultados.length === 0) {
-        lista.innerHTML = '<li>Nenhum nome relacionado encontrado.</li>';
-        return;
-      }
-      lista.innerHTML = resultados.map(item => `
-        <li><strong>${item.nome}</strong> — ${item.classificacao}</li>
-      `).join('');
-    };
-
-    const mostrarResultadoTarefa = (executante) => {
-      const lista = document.getElementById('resultadoTarefas');
-      if (!executante) {
-        lista.innerHTML = '<li>Nenhum executante encontrado para esta tarefa.</li>';
-        return;
-      }
-      lista.innerHTML = `<li><strong>${executante}</strong></li>`;
-    };
-
-    document.addEventListener('DOMContentLoaded', () => {
-      carregarDados();
-
-      document.getElementById('inputNome').addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-          if (!dadosCarregados) return;
-          const termo = normalizar(e.target.value);
-          mostrarResultadosNomes(nomesData[termo]);
-        }
-      });
-
-      document.getElementById('inputTarefa').addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-          if (!dadosCarregados) return;
-          const termo = normalizar(e.target.value);
-          mostrarResultadoTarefa(tarefasData[termo]);
-        }
-      });
+    Object.entries(res1).forEach(([nome, relacionados]) => {
+      relacionados.forEach(r => todasClassificacoes.add(r.classificacao));
+      nomesData[nome] = relacionados;
     });
-  </script>
+
+    tarefasData = res2;
+    preencherFiltroClassificacoes();
+  }
+
+  function preencherFiltroClassificacoes() {
+    const select = document.getElementById("filtroClassificacao");
+    [...todasClassificacoes].sort().forEach(cl => {
+      const option = document.createElement("option");
+      option.value = cl;
+      option.textContent = cl;
+      select.appendChild(option);
+    });
+  }
+
+  document.getElementById("inputNome").addEventListener("input", filtrarNomes);
+  document.getElementById("filtroClassificacao").addEventListener("change", filtrarNomes);
+
+  function filtrarNomes() {
+    const termo = normalizar(document.getElementById("inputNome").value);
+    const filtro = document.getElementById("filtroClassificacao").value;
+    const tbody = document.querySelector("#tabelaNomes tbody");
+    tbody.innerHTML = "";
+
+    Object.entries(nomesData).forEach(([nome, relacionados]) => {
+      if (normalizar(nome).includes(termo)) {
+        relacionados.forEach(r => {
+          if (!filtro || r.classificacao === filtro) {
+            const row = `<tr><td>${r.nome}</td><td>${r.classificacao}</td></tr>`;
+            tbody.insertAdjacentHTML("beforeend", row);
+          }
+        });
+      }
+    });
+  }
+
+  document.getElementById("inputTarefa").addEventListener("input", () => {
+    const termo = normalizar(document.getElementById("inputTarefa").value);
+    const executanteTable = document.getElementById("tabelaExecutante");
+    const relacionadosTable = document.getElementById("tabelaRelacionados");
+    executanteTable.innerHTML = "";
+    relacionadosTable.innerHTML = "";
+
+    Object.entries(tarefasData).forEach(([tarefa, exec]) => {
+      if (normalizar(tarefa).includes(termo)) {
+        executanteTable.innerHTML = `<tr><td>${exec}</td></tr>`;
+      }
+    });
+
+    Object.entries(tarefasData).forEach(([tarefa, exec]) => {
+      if (normalizar(tarefa).includes(termo) || tarefa.toLowerCase().includes(termo)) {
+        const row = `<tr><td>${tarefa}</td><td>${exec}</td></tr>`;
+        relacionadosTable.insertAdjacentHTML("beforeend", row);
+      }
+    });
+  });
+
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+      tab.classList.add("active");
+      document.getElementById(tab.dataset.tab).classList.add("active");
+    });
+  });
+
+  carregarDados();
+</script>
 </body>
 </html>
