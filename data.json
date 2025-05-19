@@ -1,110 +1,110 @@
 {
-"Anne Karolline Davin de Morais": [
+  "Anne Karolline Davin de Morais": [
     { "nome": "Jennifer Camile Macedo Rodrigues", "classificacao": "Assistente" },
     { "nome": "Gabriel Abner Alves De Pontes", "classificacao": "Assistente 2" },
-    { "nome": "Hellen Sthefane Dos Santos Fernandes", "classificacao": "Advogado Recursal" }
-    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" }
+    { "nome": "Hellen Sthefane Dos Santos Fernandes", "classificacao": "Advogado Recursal" },
+    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
-],
+  ],
   "Cinthia Samylle Martins Souza da Silva": [
     { "nome": "Yasmin de Menezes Dantas", "classificacao": "Assistente" },
-    { "nome": "Fernando Gabriel Noronha Nascimento", "classificacao": "Assistente 2" }
-    { "nome": "Hellen Sthefane Dos Santos Fernandes", "classificacao": "Advogado Recursal" }
-    { "nome": "Alyssa Geórgia Bezerra e Silva", "classificacao": "Advogado Recursal 2" }
-    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" }
+    { "nome": "Fernando Gabriel Noronha Nascimento", "classificacao": "Assistente 2" },
+    { "nome": "Hellen Sthefane Dos Santos Fernandes", "classificacao": "Advogado Recursal" },
+    { "nome": "Alyssa Geórgia Bezerra e Silva", "classificacao": "Advogado Recursal 2" },
+    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
- ],
+  ],
   "Arthur Augusto Alves de Almeida": [
     { "nome": "Állan Daniel Torres Soares", "classificacao": "Assistente" },
-    { "nome": "Breno Medeiros de Andrade", "classificacao": "Assistente 2" }
-    { "nome": "Alyssa Geórgia Bezerra e Silva", "classificacao": "Advogado Recursal" }
-    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" }
+    { "nome": "Breno Medeiros de Andrade", "classificacao": "Assistente 2" },
+    { "nome": "Alyssa Geórgia Bezerra e Silva", "classificacao": "Advogado Recursal" },
+    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
-],
+  ],
   "Christiane Serejo Cardoso": [
     { "nome": "Yasmin Karoline Bezerra Moura", "classificacao": "Assistente" },
-    { "nome": "Tayná Costa Souza", "classificacao": "Assistente 2" }
-    { "nome": "José Leonardo de Araújo Jales", "classificacao": "Advogado Recursal" }
-    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" }
+    { "nome": "Tayná Costa Souza", "classificacao": "Assistente 2" },
+    { "nome": "José Leonardo de Araújo Jales", "classificacao": "Advogado Recursal" },
+    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
-],
+  ],
   "Danielle Costa Alves": [
     { "nome": "Állan Daniel Torres Soares", "classificacao": "Assistente" },
-    { "nome": "José Leonardo de Araújo Jales", "classificacao": "Advogado Recursal 2" }
-    { "nome": "Gabriel Carvalho Rodrigues de Oliveira", "classificacao": "Advogado Recursal" }
-    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" }
+    { "nome": "José Leonardo de Araújo Jales", "classificacao": "Advogado Recursal 2" },
+    { "nome": "Gabriel Carvalho Rodrigues de Oliveira", "classificacao": "Advogado Recursal" },
+    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
-],
+  ],
   "Luana Noel da Silva": [
     { "nome": "Amanda Simões Costa da Silva", "classificacao": "Assistente" },
-    { "nome": "Gabriel Carvalho Rodrigues de Oliveira", "classificacao": "Advogado Recursal" }
-    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" }
+    { "nome": "Gabriel Carvalho Rodrigues de Oliveira", "classificacao": "Advogado Recursal" },
+    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
-],
+  ],
   "Hellen Sthefane Dos Santos Fernandes": [
-    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" }
+    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
-],
+  ],
   "Alyssa Geórgia Bezerra e Silva": [
-    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" }
+    { "nome": "Michael Henrique Borges Fonseca Rodrigues", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
-],
+  ],
   "Gabriel Carvalho Rodrigues de Oliveira": [
-    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" }
+    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
-],
+  ],
   "José Leonardo de Araújo Jales": [
-    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" }
+    { "nome": "Débora Regina Azevedo de Oliveira", "classificacao": "Assistente Recursal" },
     { "nome": "Carlos Eduardo de Almeida Bezerra", "classificacao": "Assistente Recursal 2" }
-],
+  ],
   "Ana Carolina Viana Nascimento": [
-    { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
-    { "nome": "Melissa Cristine de Oliveira e Santos", "classificacao": "Advogado 1º grau" }
+    { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" },
+    { "nome": "Melissa Cristine de Oliveira e Santos", "classificacao": "Advogado 1º grau" },
     { "nome": "Vitoria Machado Domingos", "classificacao": "Advogado 1º grau" }
-],
+  ],
   "Antônio Uemerson de Carvalho": [
-    { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
-    { "nome": "Michelle Dantas Ferreira", "classificacao": "Advogado 1º grau" }
+    { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" },
+    { "nome": "Michelle Dantas Ferreira", "classificacao": "Advogado 1º grau" },
     { "nome": "Moises Marcolino Silva", "classificacao": "Advogado 1º grau 2" }
-],
+  ],
   "Algacy Chaves de Almeida Júnior": [
-    { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
-    { "nome": "Maria Gabrielly Silva Rodrigues", "classificacao": "Advogado 1º grau" }
+    { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" },
+    { "nome": "Maria Gabrielly Silva Rodrigues", "classificacao": "Advogado 1º grau" },
     { "nome": "Andrielly Duarte de Farias", "classificacao": "Advogado 1º grau" }
- ],
+  ],
   "Mikaelle Thaisa da Costa": [
-    { "nome": "Isabella Ferreira Barbalho Borja", "classificacao": "Assistente" }
-    { "nome": "Antônio Uemerson de Carvalho", "classificacao": "Advogado Recursal" }
+    { "nome": "Isabella Ferreira Barbalho Borja", "classificacao": "Assistente" },
+    { "nome": "Antônio Uemerson de Carvalho", "classificacao": "Advogado Recursal" },
     { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
-],
+  ],
   "Melissa Cristine de Oliveira e Santos": [
-    { "nome": "Mateus Brito de Brito", "classificacao": "Assistente" }
-    { "nome": "Ana Carolina Viana Nascimento", "classificacao": "Advogado Recursal" }
+    { "nome": "Mateus Brito de Brito", "classificacao": "Assistente" },
+    { "nome": "Ana Carolina Viana Nascimento", "classificacao": "Advogado Recursal" },
     { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
-],
+  ],
   "Andrielly Duarte de Farias": [
-    { "nome": "Luana de Araujo Alves", "classificacao": "Assistente" }
-    { "nome": "Algacy Chaves de Almeida Júnior", "classificacao": "Advogado Recursal" }
+    { "nome": "Luana de Araujo Alves", "classificacao": "Assistente" },
+    { "nome": "Algacy Chaves de Almeida Júnior", "classificacao": "Advogado Recursal" },
     { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
-],
+  ],
   "Michelle Dantas Ferreira": [
-    { "nome": "Maria Eduarda Guedes Cavalcante", "classificacao": "Assistente" }
-    { "nome": "Antônio Uemerson de Carvalho", "classificacao": "Advogado Recursal" }
+    { "nome": "Maria Eduarda Guedes Cavalcante", "classificacao": "Assistente" },
+    { "nome": "Antônio Uemerson de Carvalho", "classificacao": "Advogado Recursal" },
     { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
-],
+  ],
   "Moises Marcolino Silva": [
-    { "nome": "Maria Eduarda Guedes Cavalcante", "classificacao": "Assistente" }
-    { "nome": "Antônio Uemerson de Carvalho", "classificacao": "Advogado Recursal" }
+    { "nome": "Maria Eduarda Guedes Cavalcante", "classificacao": "Assistente" },
+    { "nome": "Antônio Uemerson de Carvalho", "classificacao": "Advogado Recursal" },
     { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
-],
+  ],
   "Maria Gabrielly Silva Rodrigues": [
-    { "nome": "Marilia Gabriella Andrade Freitas", "classificacao": "Assistente" }
-    { "nome": "Algacy Chaves de Almeida Júnior", "classificacao": "Advogado Recursal" }
+    { "nome": "Marilia Gabriella Andrade Freitas", "classificacao": "Assistente" },
+    { "nome": "Algacy Chaves de Almeida Júnior", "classificacao": "Advogado Recursal" },
     { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
-],
+  ],
   "Vitoria Machado Domingos": [
-    { "nome": "Paulo Fernando Cisneiro da Costa Reis", "classificacao": "Assistente" }
-    { "nome": "Ana Carolina Viana Nascimento", "classificacao": "Advogado Recursal" }
+    { "nome": "Paulo Fernando Cisneiro da Costa Reis", "classificacao": "Assistente" },
+    { "nome": "Ana Carolina Viana Nascimento", "classificacao": "Advogado Recursal" },
     { "nome": "Alexandre Victor da Silva Lima", "classificacao": "Assistente Recursal" }
   ]
 }
