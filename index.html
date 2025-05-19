@@ -1,124 +1,105 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nomes Relacionados</title>
+  <title>Nomes e Tarefas Relacionadas</title>
   <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    input { 
-      padding: 10px; 
-      width: 100%; 
-      max-width: 500px; 
-      font-size: 16px;
-      margin-bottom: 15px;
-    }
-    ul { 
-      margin-top: 20px; 
-      list-style-type: none; 
-      padding: 0; 
-    }
-    li { 
-      padding: 10px 0; 
-      border-bottom: 1px solid #eee; 
-    }
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+    input { padding: 10px; width: 100%; max-width: 500px; font-size: 16px; margin-bottom: 10px; }
+    h2 { margin-top: 40px; }
+    ul { list-style-type: none; padding: 0; }
+    li { padding: 10px 0; border-bottom: 1px solid #eee; }
     .loading { color: #666; }
     .error { color: #d32f2f; }
   </style>
 </head>
 <body>
   <h1>Consulta de Nomes Relacionados</h1>
-  <input type="text" id="inputNome" placeholder="Digite o nome completo e pressione Enter..." />
-  <ul id="resultado"></ul>
+  <input type="text" id="inputNome" placeholder="Digite um nome e pressione Enter..." />
+  <ul id="resultadoNomes"></ul>
+
+  <h2>Consulta de Tarefas e Executantes</h2>
+  <input type="text" id="inputTarefa" placeholder="Digite uma tarefa e pressione Enter..." />
+  <ul id="resultadoTarefas"></ul>
 
   <script>
-    // Cache dos dados
     const nomesData = {};
+    let tarefasData = {};
     let dadosCarregados = false;
 
-    // Normalização de texto (remove acentos e espaços)
     const normalizar = (str) => {
       return str
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[̀-ͯ]/g, "")
         .toLowerCase()
         .trim();
     };
 
-    // Carrega os dados do JSON
     const carregarDados = async () => {
       try {
-        mostrarMensagem('Carregando dados...', 'loading');
-        
-        const resposta = await fetch('data.json');
-        
-        if (!resposta.ok) {
-          throw new Error(`Erro HTTP! status: ${resposta.status}`);
-        }
-        
-        const dados = await resposta.json();
-        
-        // Prepara a estrutura de dados
-        Object.keys(dados).forEach(chave => {
-          nomesData[normalizar(chave)] = dados[chave];
+        const [res1, res2] = await Promise.all([
+          fetch('data.json'),
+          fetch('base2.json')
+        ]);
+
+        const dadosNomes = await res1.json();
+        const dadosTarefas = await res2.json();
+
+        Object.keys(dadosNomes).forEach(chave => {
+          nomesData[normalizar(chave)] = dadosNomes[chave];
         });
-        
+
+        Object.keys(dadosTarefas).forEach(chave => {
+          tarefasData[normalizar(chave)] = dadosTarefas[chave];
+        });
+
         dadosCarregados = true;
-        mostrarMensagem('Pronto para consultar. Digite um nome e pressione Enter.');
       } catch (erro) {
-        console.error('Erro ao carregar dados:', erro);
-        mostrarMensagem('Erro ao carregar os dados. Verifique o console.', 'error');
+        console.error("Erro ao carregar dados:", erro);
       }
     };
 
-    // Mostra mensagens na interface
-    const mostrarMensagem = (mensagem, tipo = '') => {
-      const elemento = document.getElementById('resultado');
-      elemento.innerHTML = `<li class="${tipo}">${mensagem}</li>`;
-    };
-
-    // Mostra resultados na interface
-    const mostrarResultados = (resultados) => {
-      const lista = document.getElementById('resultado');
-      
+    const mostrarResultadosNomes = (resultados) => {
+      const lista = document.getElementById('resultadoNomes');
       if (!resultados || resultados.length === 0) {
         lista.innerHTML = '<li>Nenhum nome relacionado encontrado.</li>';
         return;
       }
-      
       lista.innerHTML = resultados.map(item => `
-        <li>
-          <strong>${item.nome}</strong> — ${item.classificacao}
-        </li>
+        <li><strong>${item.nome}</strong> — ${item.classificacao}</li>
       `).join('');
     };
 
-    // Inicializa a aplicação
-    const iniciarApp = () => {
-      // Carrega os dados
-      carregarDados();
-
-      // Configura o evento de busca
-      document.getElementById('inputNome').addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-          if (!dadosCarregados) {
-            mostrarMensagem('Aguarde, os dados ainda estão sendo carregados...', 'loading');
-            return;
-          }
-
-          const termoBusca = normalizar(e.target.value);
-          mostrarResultados(nomesData[termoBusca]);
-        }
-      });
+    const mostrarResultadoTarefa = (executante) => {
+      const lista = document.getElementById('resultadoTarefas');
+      if (!executante) {
+        lista.innerHTML = '<li>Nenhum executante encontrado para esta tarefa.</li>';
+        return;
+      }
+      lista.innerHTML = `<li><strong>${executante}</strong></li>`;
     };
 
-    // Inicia quando o DOM estiver pronto
-    document.addEventListener('DOMContentLoaded', iniciarApp);
+    document.addEventListener('DOMContentLoaded', () => {
+      carregarDados();
+
+      document.getElementById('inputNome').addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+          if (!dadosCarregados) return;
+          const termo = normalizar(e.target.value);
+          mostrarResultadosNomes(nomesData[termo]);
+        }
+      });
+
+      document.getElementById('inputTarefa').addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+          if (!dadosCarregados) return;
+          const termo = normalizar(e.target.value);
+          mostrarResultadoTarefa(tarefasData[termo]);
+        }
+      });
+    });
   </script>
 </body>
 </html>
