@@ -1,7 +1,7 @@
 {
   "Anne Karolline Davin de Morais": [
     {
-      "nome": "Jennifer Camile Macedo Rodrigues",
+      "nome": "Állan Daniel Torres Soares",
       "classificacao": "Assistente"
     },
     {
@@ -23,11 +23,15 @@
   ],
   "Cinthia Samylle Martins Souza da Silva": [
     {
-      "nome": "Yasmin de Menezes Dantas",
+      "nome": "Paulo ítalo de Oliveira",
       "classificacao": "Assistente"
     },
     {
       "nome": "Fernando Gabriel Noronha Nascimento",
+      "classificacao": "Assistente 2"
+    },
+    {
+      "nome": "Amanda Simões Costa da Silva",
       "classificacao": "Assistente 2"
     },
     {
@@ -49,7 +53,7 @@
   ],
   "Arthur Augusto Alves de Almeida": [
     {
-      "nome": "Állan Daniel Torres Soares",
+      "nome": "Jennifer Camile Macedo Rodrigues",
       "classificacao": "Assistente"
     },
     {
@@ -94,6 +98,10 @@
   "Danielle Costa Alves": [
     {
       "nome": "Állan Daniel Torres Soares",
+      "classificacao": "Assistente"
+    },
+    {
+      "nome": "Yasmin de Menezes Dantas",
       "classificacao": "Assistente"
     },
     {
